@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>首页</title>
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'admin.css' %}">
+<script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="admin.js"></script>
+
+
+
+</head>
+
+<body>
+	<div id="wrap">
+        {% include 'common-header.html' %}
+        {% include 'common-modalBox.html' %}
+		<!--评论区-->
+		<div class="container">
+			<div class="row float-element">
+				<!--评论区内容-->
+				<div class="big_content">
+				
+					<form class="mobile ud-pd-sm" action="/search/cOrt/" method="get">
+						<div class="form-group">
+							<input type="text" name="q" class="form-control input" placeholder="搜素你感兴趣的课程">
+						</div>
+					</form>
+					
+					<h4 class="blue desktop">全站最新点评</h4>
+					
+					<div class="ud-pd-sm margin_bottom">
+						<span class="text-muted"> 共2682个点评(当前第一页)</span>
+					</div>
+					
+					<!-- 评论 -->
+					{% for comment in comments %}
+					<div class="col-md-4">
+						<div class="panel panel-default">
+						  <div class="panel-heading">
+						   <div class="row">
+								<div class="col-sm-3">
+									<img class="avatar-md circle" src="{{ comment.photo }}">
+								</div>
+								<div class="bm-pd-md col-sm-8">
+									<a href="/student/{{ comment.userId }}">{{ comment.userName }}</a>&nbsp;&nbsp;点评了&nbsp;&nbsp;
+									<a href="/teacher/{{ comment.teachId }}"> {{ comment.teachName }}</a>
+									<br>
+									<span class="float-right">{{ comment.commentTime }}</span>
+								</div>
+							</div>
+						  </div>
+						  <div class="panel-body">
+							<p class="text-muted">
+								{{ comment.comment }}
+								<a href="/teacher-course/{{ comment.teachId }}">>>更多</a>
+							</p>
+						  </div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+                {% include 'common-flipPage.html' %}
+			</div>
+
+		</div>
+        {% include 'common-footer.html' %}
+	</div>
+</body>
+</html>
