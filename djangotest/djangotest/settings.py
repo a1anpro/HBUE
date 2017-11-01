@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hbue',
+    'hbue.apps.HbueConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,8 +77,13 @@ WSGI_APPLICATION = 'djangotest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     #   'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hbue',
+        'USER': 'root',
+        'PASSWORD': '328213',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

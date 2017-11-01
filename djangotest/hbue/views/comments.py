@@ -3,6 +3,7 @@ from django.http import Http404
 import string
 
 from hbue.static.function import index
+from ..models import *
 
 def main(request, current_page="1"):
     try:
@@ -10,86 +11,13 @@ def main(request, current_page="1"):
     except TypeError:
         raise Http404('current_page 失败')
 
-    comments = [{
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        }, {
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        }, {
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        }, {
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        }, {
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        },{
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        }, {
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        }, {
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        }, {
-            'userName': '1',
-            'teachName': '2',
-            'userId': current_page,
-            'teachId': 1,
-            'commentTime': '2017-02-02',
-            'comment': '1234567890',
-            'photo': '#',
-        }, ]
-
     data, len_list = index(comments, current_page)
 
-    return render(request, "main.html", {
+    return render(request, "old_main.html", {
         'comments': data,
         'len_list': len_list,
         'urlNum': current_page,
+        'total': 100,
     })
 
 
@@ -125,3 +53,79 @@ def index(input, current_page):
             len_list = range(1, 5)
 
     return data, len_list,
+
+
+#{
+    #    comments = [{
+    #         'userName': '1',
+    #         'teachName': '2',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     }, {
+    #         'userName': '2',
+    #         'teachName': '3',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     }, {
+    #         'userName': '223',
+    #         'teachName': '2123',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     }, {
+    #         'userName': '1123',
+    #         'teachName': '2123123',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     }, {
+    #         'userName': '1123123',
+    #         'teachName': '212412',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     },{
+    #         'userName': '1asf',
+    #         'teachName': 'sdfsdf2',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     }, {
+    #         'userName': '1sdf',
+    #         'teachName': '2sdf',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     }, {
+    #         'userName': '1sdfsdf',
+    #         'teachName': '2',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     }, {
+    #         'userName': '1',
+    #         'teachName': '2',
+    #         'userId': current_page,
+    #         'teachId': 1,
+    #         'commentTime': '2017-02-02',
+    #         'comment': '1234567890',
+    #         'photo': '#',
+    #     }, ]
