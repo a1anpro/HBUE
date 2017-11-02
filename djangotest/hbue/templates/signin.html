@@ -1,82 +1,25 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>登录</title>
-<link rel="stylesheet" href="bs/css/bootstrap.css">
-<link rel="stylesheet" href="admin.css">
-<script src="bs/js/jquery.min.js"></script>
-<script src="bs/js/bootstrap.js"></script>
-<script src="admin.js"></script>
-</head>
+{% extends "base.html"%}{# 继承父模版 #}
 
-<body>
-	<div id="wrap">
-		<!--导航栏-->
-		<nav class="navbar navbar-default">
-			<div class="container">				
-				<div class="navbar-header">
-					<a class="navbar-brand">HBUE评课社区</a>
-				</div>
-			</div>
-		</nav>
-		
-		<div class="container">
-			<div class="row float-element">
-				<h3 class="blue">登录</h3>
-				<hr>
-				<form class="form-horizontal" method="post" action="#">
-					<div class="form-group">
-						<label for="userid" class="col-sm-2 control-label">账号</label>
-						<div class="col-sm-4">
-							<input type="text" name="userid" class="form-control" placeholder="学号">
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<label for="password" class="col-sm-2 control-label">密码</label>
-						<div class="col-sm-4">
-							<input type="password" name="password" class="form-control" placeholder="Password">
-						</div>
-					</div>		
-					
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-4">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox">记住我
-								</label>
-								<a class="float-right" href="reset-password.html">忘记密码？</a>
-							</div>
-						</div>
-					</div>					
-				
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-4">
-							<button type="submit" class="btn btn-primary btn-block">注册</button>
-						</div>
-					</div>
-				</form>
-				<div class="row ud-pd-md2">
-					<div class="col-sm-offset-2 col-sm-4">
-						<span class="text-muted">
-							没有账号？
-							<a href="signup.html">立即注册</a>
-						</span>
-					</div>
-				</div>
-			</div>		
-		</div>
-			
-		<!--copyright-->
-		<div class="container" id="footer">
-			<div class="ud-pd-sm">
-				<a class="right-pd-md" href="about.html">关于我们</a>
-				<a class="right-pd-md" href="blog.html" target="_blank">网站博客</a>
-				<a class="right-pd-md" href="regulation.html">社区规则</a>
-			</div>
-			<span class="footer-text text-muted">Copyright © 2017 HBUE评课社区</span>
-		</div>
-	</div>
-</body>
-</html>
+{% load staticfiles %}
+
+{% block title%}
+    登录
+{% endblock %}
+
+{% block staticFiles %}
+    {% include "common-head.html" %}
+{% endblock %}
+
+{% block nav%}{# 导航栏 #}
+    {% include "common-nav2.html" %}
+{% endblock %}
+
+<!--不需要模态框-->
+
+{% block body%}{# 关于内容 #}
+    {% include "signin-body.html" %}
+{% endblock %}
+
+{% block footer%}{# 底页 #}
+    {% include "common-footer.html" %}
+{% endblock %}
