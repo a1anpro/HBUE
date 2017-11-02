@@ -9,8 +9,8 @@ urlpatterns = [
     url(r'^search/$', search.redirect), # 遇到url 为 /search 时，需要重定向
     url(r'^search/(?P<cOrt>[\u4e00-\u9fa5]*)/$', search.Search), # 按课程或教师进行查询
     url(r'^search/(?P<cOrt>[\u4e00-\u9fa5]*)&(?P<page>[0-9]+)/$', search.Search), # 按课程或教师进行查询并翻页
-    url(r'^course/$', courses.All),  # 所有的课程页
-    url(r'^course/(?P<page>[0-9]+)/$', courses.All),  # 点击分页后进行跳转之后的结果
+    url(r'^courses/$', courses.All),  # 所有的课程页
+    url(r'^courses/(?P<page>[0-9]+)/$', courses.All),  # 点击分页后进行跳转之后的结果
     url(r'^course/[0-9]{6}/$', courses.One), # 单个课程页，即课程详细点评页 点击老师课程名跳转
     url(r'^course/[0-9]{6}/#comment-[0-9]{6}/$', courses.One), # 点击评论里的更多 跳转到相应的course下的锚点
     url(r'^signin/$', sign.sin),  # 登录页面

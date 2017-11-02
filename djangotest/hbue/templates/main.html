@@ -1,13 +1,11 @@
-{% extends "partition/base.html" %}{# 继承父模版 #}
-
-{% load staticfiles %}
+{% extends "partition/base.html"%}{# 继承父模版 #}
 
 {% block title%}
-    课程
+    点评
 {% endblock %}
 
 {% block staticFiles %}
-    {% include "common-head.html" %}
+    {% include "partition/common-head.html" %}
 {% endblock %}
 
 {% block nav%}{# 导航栏 #}
@@ -15,13 +13,13 @@
 {% endblock %}
 
 {% block modalBox%}{# 模态框 #}
-    {% include "common-modalBox.html" %}
+    {% include "partition/common-modalBox.html" %}
 {% endblock %}
 
 {% block body%}{# 评论区 #}
-    {% include "courses-body.html" %}
+    {% include "partition/main-body.html" %}
 {% endblock %}
 
 {% block footer%}{# 底页 #}
-    {% include "common-footer.html" %}
+    {% include "partition/common-footer.html" %}
 {% endblock %}

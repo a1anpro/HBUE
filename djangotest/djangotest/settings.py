@@ -82,7 +82,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hbue',
         'USER': 'root',
-        'PASSWORD': '328213',
+        'PASSWORD': '123456',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -125,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/hbue/static/'
 STATIC_ROOT=[
-    os.path.join(BASE_DIR,'hbue/static')
+    os.path.join(BASE_DIR,'/hbue/static')
 ]
