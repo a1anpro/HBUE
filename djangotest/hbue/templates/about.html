@@ -1,17 +1,15 @@
-{% extends "base.html"%}{# 继承父模版 #}
-
-{% load staticfiles %}
+{% extends "partition/base.html"%}{# 继承父模版 #}
 
 {% block title%}
     关于我们
 {% endblock %}
 
 {% block staticFiles %}
-    {% include "common-head.html" %}
+    {% include "partition/common-head.html" %}
 {% endblock %}
 
 {% block nav%}{# 导航栏 #}
-    {% include "common-nav2.html" %}
+    {% include "partition/common-nav2.html" %}
 {% endblock %}
 
 <!--不需要模态框-->
@@ -21,5 +19,5 @@
 {% endblock %}
 
 {% block footer%}{# 底页 #}
-    {% include "common-footer.html" %}
+    {% include "partition/common-footer.html" %}
 {% endblock %}
