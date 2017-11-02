@@ -1,2 +1,16 @@
-settings.py
+\djangotest\djangotest\settings.py
+
+\frontend
+
+\process
+
+\djangotest\hbue\migrations
+
+\djangotest\hbue\__pycache__
+
+\djangotest\hbue\static\__pycache__
+
+\djangotest\hbue\static\bootstrap
+
+\djangotest\hbue\static\jquery-1.11.3
 
