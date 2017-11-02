@@ -51,7 +51,7 @@ def main(request, current_page="1"):
         'commentTime': '2017-02-02',
         'comment': '1234567890',
         'photo': '#',
-    },{
+    }, {
         'userName': '1asf',
         'teachName': 'sdfsdf2',
         'userId': current_page,
@@ -84,6 +84,7 @@ def main(request, current_page="1"):
         'comment': '1234567890',
         'photo': '#',
     }, ]
+
     data, len_list = index(comments, current_page)
 
     return render(request, "main.html", {
@@ -126,4 +127,5 @@ def index(input, current_page):
             len_list = range(1, 5)
 
     return data, len_list,
+
 
