@@ -7,15 +7,11 @@
 {% endblock %}
 
 {% block staticFiles %}
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'admin.css' %}">
-    <script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin.js' %}"></script>
+    {% include "common-head.html" %}
 {% endblock %}
 
 {% block nav%}{# 导航栏 #}
-    {% include "common-nav.html" %}
+    {% include "common-nav1.html" %}
 {% endblock %}
 
 {% block modalBox%}{# 模态框 #}

@@ -2,46 +2,22 @@
     <div class="row float-element">
         <div class="col-md-8">
             <div class="big_content">
-
                 <div class="inline-h3">
-                    <a href="/user/{{ userId }}/comments/">
-                        <span class="blue h4">
-                            <strong>点评</strong>
-                        </span>（4门）
-                    </a>
-                    <span class="float-right">
-                        <a href="/user/{{ userId }}/comments/">查看更多>></a>
-                    </span>
+                    <span class="blue h3">关注</span>
+                    <span class="text-muted">（2门）</span>
                 </div>
-
-                <!--页面最多显示三条评论-->
                 {% for comment in comments %}
                 <div class="ud-pd-md2 dashed">
                     <div class="ud-pd-sm">
-                        <a href="/course/{{ comment.courseOnlyId }}/">{{ comment.name }}</a> <!--name 包括课程名和老师名-->
-                        <span class="text-muted small float-right">{{ comment.time }}</span> <!--评论时间-->
+                        <a href="/course/{{ comment.courseOnlyId }}">{{ comment.courseName }}({{ comment.teacherName }})</a>
+                        <span class="text-muted small float-right">{{ comment.commentTime }}</span>
                     </div>
                     <p class="dark-grey">
-                        {{ comment.detail }} <!--评论内容-->
-                        <a href="/course/{{ comment.courseOnlyId }}/#comment-{{commentId}}">>>更多</a>
+                        {{ comment.detail }}
                     </p>
                 </div>
                 {% endfor %}
-
             </div>
-
-            <!--关注-->
-            <div class="big_content">
-                <div class="inline-h3">
-                    <a href="/user/{{ userId }}/follow/">
-                        <span class="blue h4">
-                            <strong>关注</strong>&nbsp;&nbsp;（2门）
-                        </span>
-                    </a>
-                </div>
-                <p class="text-muted">可以关注喜欢的课程哦！</p>
-            </div>
-
         </div>
 
         <!--简介-->

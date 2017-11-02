@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HBUE评课系统-{% block title %}{% endblock %}</title>
+
+    {% load staticfiles %}{# 加载静态文件头信息 #}
+    {% block staticFiles %}{% endblock %}{# 加入script标签和link标签 #}
+
+</head>
+<body>
+    <div id="wrap">
+        {% block nav %}{% endblock %}{# 导航栏 #}
+        {% block modalBox %}{% endblock %}{#模态框#}
+        {% block body %} {% endblock %}
+        {% block footer %} {% endblock %}
+    </div>
+</body>
+</html>

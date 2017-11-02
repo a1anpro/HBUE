@@ -55,8 +55,10 @@ ROOT_URLCONF = 'hbue.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [
+            os.path.join(BASE_DIR, 'hbue/templates'),
+            os.path.join(BASE_DIR, 'hbue/templates/partition'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,7 +79,6 @@ WSGI_APPLICATION = 'djangotest.wsgi.application'
 
 DATABASES = {
     'default': {
-     #   'ENGINE': 'django.db.backends.mysql',
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hbue',
         'USER': 'root',
