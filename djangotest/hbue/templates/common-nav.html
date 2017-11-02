@@ -21,9 +21,15 @@
             </form>
 
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <button type="button" class="btn btn-default navbar-btn pull-right smodal">登录</button>
-                </li>
+                {% if isLogin %}
+                    <li>
+                        Login!
+                    </li>
+                {% else %}
+                    <li>
+                        <button type="button" class="btn btn-default navbar-btn pull-right smodal">登录</button>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
