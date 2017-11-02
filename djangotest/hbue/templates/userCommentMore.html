@@ -1,13 +1,13 @@
-{% extends "ok_base.html" %}{# 继承父模版 #}
+{% extends "base.html"%}{# 继承父模版 #}
 
 {% load staticfiles %}
 
 {% block title%}
-    个人信息
+    点评
 {% endblock %}
 
 {% block staticFiles %}
-   {% include "common-head.html" %}
+    {% include "common-head.html" %}
 {% endblock %}
 
 {% block nav%}{# 导航栏 #}
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block body%}{# 评论区 #}
-    {% include "user-body.html" %}
+    {% include "userCourseMore-body.html" %}
 {% endblock %}
 
 {% block footer%}{# 底页 #}
