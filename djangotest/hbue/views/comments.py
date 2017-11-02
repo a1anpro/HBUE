@@ -87,7 +87,7 @@ def main(request, current_page="1"):
 
     data, len_list = index(comments, current_page)
 
-    return render(request, "main.html", {
+    return render(request, "ok_main.html", {
         'comments': data,
         'len_list': len_list,
         'urlNum': current_page,
