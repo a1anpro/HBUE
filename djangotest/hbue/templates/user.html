@@ -3,11 +3,11 @@
 {% load staticfiles %}
 
 {% block title%}
-    {{ courseName }}({{teacherName}})
+    个人信息
 {% endblock %}
 
 {% block staticFiles %}
-    {% include "common-head.html" %}
+   {% include "common-head.html" %}
 {% endblock %}
 
 {% block nav%}{# 导航栏 #}
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block body%}{# 评论区 #}
-    {% include "course-body.html" %}
+    {% include "user-body.html" %}
 {% endblock %}
 
 {% block footer%}{# 底页 #}

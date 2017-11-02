@@ -55,8 +55,10 @@ ROOT_URLCONF = 'hbue.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [
+            os.path.join(BASE_DIR, 'hbue/templates'),
+            os.path.join(BASE_DIR, 'hbue/templates/partition'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,11 +79,10 @@ WSGI_APPLICATION = 'djangotest.wsgi.application'
 
 DATABASES = {
     'default': {
-     #   'ENGINE': 'django.db.backends.mysql',
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hbue',
         'USER': 'root',
-        'PASSWORD': '328213',
+        'PASSWORD': '123456',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -124,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/hbue/static/'
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'/hbue/static')
+STATIC_URL = '/static/'
+STATIC_ROOT=[
+    os.path.join(BASE_DIR,'hbue/static')
 ]

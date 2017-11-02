@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row float-element">
+        <div class="col-md-8">
+            <div class="big_content">
+
+                <div class="inline-h3">
+                    <span class="blue h3">课程</span>
+                    <span class="text-muted">（共7门）</span>
+                </div>
+                {% for teacherCourse in teacherCourses %}
+                <div class="ud-pd-md2 dashed">
+                    <span class="blue">
+                        <a class="px16" href="/course/{{ teacherCourse.courseOnlyId }}">{{ teacherCourse.courseName}}</a>
+                    </span>
+                    <div class="ud-pd-sm blue">
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        <span class="rl-pd-sm h4">9.4</span>
+                        <span class="text-muted px12">（{{teacherCourse.commentNum }}人评价）</span> <!-- 评价人数-->
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+
+        <!--简介-->
+        <div class="col-md-4">
+            <div class="ud-pd-md2 dashed">
+                <img class="avatar-lg circle" src="{{teacherIcon}}">
+                <h3 class="blue">{{ teacherName }}</h3>
+                <p>教师主页：暂无</p>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,20 +1,17 @@
 {% extends "base.html"%}{# 继承父模版 #}
-{% block title%}
-    HBUE评课系统
-{% endblock %}
 
 {% load staticfiles %}
 
+{% block title%}
+    点评
+{% endblock %}
+
 {% block staticFiles %}
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'admin.css' %}">
-    <script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin.js' %}"></script>
+    {% include "common-head.html" %}
 {% endblock %}
 
 {% block nav%}{# 导航栏 #}
-    {% include "common-nav.html" %}
+    {% include "common-nav1.html" %}
 {% endblock %}
 
 {% block modalBox%}{# 模态框 #}
@@ -22,7 +19,7 @@
 {% endblock %}
 
 {% block body%}{# 评论区 #}
-    {% include "common-body.html" %}
+    {% include "main-body.html" %}
 {% endblock %}
 
 {% block footer%}{# 底页 #}

@@ -1,0 +1,43 @@
+<!--评论区-->
+<div class="container">
+    <div class="row float-element">
+        <!--评论区内容-->
+        <div class="big_content">
+
+            <h4 class="blue desktop">全站最新点评</h4>
+
+            <div class="ud-pd-sm margin_bottom">
+                <span class="text-muted"> 共{{ total }}个点评(当前第一页)</span>
+            </div>
+
+            <!-- 评论 -->
+            {% for comment in comments %}
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                   <div class="row">
+                        <div class="col-sm-3">
+                            <img class="avatar-md circle" src="{{ comment.photo }}">
+                        </div>
+                        <div class="bm-pd-md col-sm-8">
+                            <a href="/student/{{ comment.userId }}">{{ comment.userName }}</a>&nbsp;&nbsp;点评了&nbsp;&nbsp;
+                            <a href="/teacher/{{ comment.teachId }}"> {{ comment.teachName }}</a>
+                            <br>
+                            <span class="float-right">{{ comment.commentTime }}</span>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="panel-body">
+                    <p class="text-muted">
+                        {{ comment.comment }}
+                        <a href="course/{{ comment.courseOnlyId }}/#comment-{{ comment.userId }}">>>更多</a>
+                    </p>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% include 'common-flipPage.html' %}
+    </div>
+
+</div>
