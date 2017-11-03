@@ -1,3 +1,5 @@
+{# 用户个人信息 #}
+{% load staticfiles %}
 <div class="container">
     <div class="row float-element">
         <div class="col-md-8">
@@ -47,11 +49,12 @@
         <!--简介-->
         <div class="col-md-4">
             <div class="ud-pd-md2">
-                <img class="avatar-lg circle" src="img/user.png">
-                <h3 class="blue">swiftiemooc</h3>
+                <img class="avatar-lg circle" src="{% static "img/penguin.png" %}">
+                <h3 class="blue">{{ current_user.userName }}</h3>
                 <ul class="list-unstyled dark-grey">
-                    <li class="ud-pd-sm">简介：None</li>
-                    <li class="ud-pd-sm" style="overflow: hidden">博客：暂无</li>
+                    <li class="ud-pd-sm">简介：<i><p>{{ current_user.userInfo }}</p></i></li>
+
+{#                    <li class="ud-pd-sm" style="overflow: hidden">博客：暂无</li>#}
                     <li class="ud-pd-sm">推荐了
                         <strong>
                             <a href="/user/{{ userId }}/follow/">2</a>

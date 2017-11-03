@@ -16,11 +16,11 @@ urlpatterns = [
     url(r'^signin/$', sign.sin),  # 登录页面
     url(r'^signup/$', sign.sup),  # 注册页面
     url(r'^reset/$', sign.reset), # 密码重置
-    url(r'^user/[0-9]{6}/$', user.user_x), # 未登录时别人看到的
-    url(r'^user/[0-9]{6}/follow/$', user.user_x),  # 关注的人
-    url(r'^user/[0-9]{6}/comments/$', user.user_x),  # 该用户所有的评论
-    url(r'^user/inner/[0-9]{6}/$', user.user_inner), # 登录或者注册过后进行跳转 用户id 未明确
-    url(r'^teacher/[0-9]{6}$', teacher.teachCourse), # 点击老师姓名时 跳转 显示该老师所有的课程1
+    url(r'^user/([0-9]{1,6})/$', user.user_x), # 未登录时别人看到的
+    url(r'^user/([0-9]{1,6})/follow/$', user.user_x),  # 关注的人
+    url(r'^user/([0-9]{1,6})/comments/$', user.user_x),  # 该用户所有的评论
+    url(r'^user/inner/([0-9]{1,6})/$', user.user_inner), # 登录或者注册过后进行跳转 用户id 未明确
+    url(r'^teacher/([0-9]{1,6})$', teacher.teachCourse), # 点击老师姓名时 跳转 显示该老师所有的课程1
     url(r'^about/$', other.about), # 关于我们
     url(r'^blog/$', other.blog), # 博客
     url(r'^community-rule/$', other.rule),  # 使用规则

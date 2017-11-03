@@ -120,26 +120,27 @@
             <div class="ud-pd-md2 dashed">
                 <img class="avatar-lg circle" src="{% static "img/user.png" %} ">{# 静态文件不会 #}
                 <h3 class="blue">
-                    <a href="/teacher/{{ teacherId}}">{{ teacherName}}</a>
+                    <a href="/teacher/{{ course.teacher.id}}">&nbsp;&nbsp;{{ course.teacher.teacherName}}</a>
                 </h3>
             </div>
-            <!--教这门课的其他老师-->
-            <div class="ud-pd-md2 dashed">
-                <h4 class="blue">其他老师的{{ courseName }}课</h4>
-                {% for otherTeacher in otherTeachers %}
+
+            <!--这个老师教的其他课-->
+            <div class="ud-pd-md dashed">
+                <h4 class="blue"><strong>{{ course.teacher.teacherName}}</strong>&nbsp;老师的其他课</h4>
+                {% for otherCourse in otherCourses %}
                 <div class="ud-pd-sm">
-                    <a href="/course/{{ otherTeacher.courseOnlyId }}">{{ otherTeacher.name }}</a>
-                    <span class="float-right grey">{{ otherTeacher.grade }}}</span>
+                    <a href="/course/{{ otherCourse.id }}">{{ otherCourse.clss.className }}</a>
+                    <span class="float-right grey">学分:{{ otherCourse.clss.credit }}.0</span>
                 </div>
                 {% endfor %}
             </div>
-            <!--这个老师教的其他课-->
-            <div class="ud-pd-md dashed">
-                <h4 class="blue">{{ teacherName}}的其他课</h4>
-                {% for otherCourse in otherCourses %}
+            <!--教这门课的其他老师-->
+            <div class="ud-pd-md2 dashed">
+                <h4 class="blue">其他老师的&nbsp;<strong>{{ course.clss.className }}</strong>&nbsp;课:</h4>
+                {% for otherTeacher in otherTeachers %}
                 <div class="ud-pd-sm">
-                    <a href="/course/{{ otherCourse.courseOnlyId }}">{{ otherCourse.name }}</a>
-                    <span class="float-right grey">{{ otherCourse.grade }}}</span>
+                    <a href="/course/{{ otherTeacher.id }}">{{ otherTeacher.teacher.teacherName }}</a>
+                    <span class="float-right grey">{{ otherTeacher.grade }}</span>
                 </div>
                 {% endfor %}
             </div>

@@ -81,7 +81,7 @@ class Comment(models.Model):
     ifPass = models.BooleanField()#是否通过审核
 
     def __str__(self):
-        return self.userId + '(' + self.courseOnlyId + ')'
+        return self.user.userName + '(' + self.course.clss.className + ')'
 
 # 推荐
 class Like(models.Model):
@@ -92,7 +92,7 @@ class Like(models.Model):
     # courseOnlyId = models.CharField(max_length=20)#课程唯一id
 
     def __str__(self):
-        return 'recommend:' + self.userId + ' likes ' + self.courseOnlyId
+        return 'recommend:' + self.user.userName + ' likes ' + self.course.clss.className
 
 
 

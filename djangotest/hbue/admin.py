@@ -5,15 +5,16 @@ from .models import *
 # Register your models here.
 
 class ClsstAdmin(admin.ModelAdmin):
-    list_display = ('classId','className')
+    list_display = ('classId','id','className')
     search_fields = ('classClass',)
     # fields = ('classId','className')
 
 class CommentAdmin(admin.ModelAdmin):
-    fields = ('ifPass',)
+    list_display = ('id','course','user','callRate', 'passRate', 'getRate','ifPass')
+    #fields = ('ifPass',)
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('clss','teacher','likes','unlikes','commentNum','callRate','passRate','getRate',)
+    list_display = ('clss','id','teacher','likes','unlikes','commentNum','callRate','passRate','getRate',)
     # search_fields = ('teacherName',)
 
 admin.site.register(User)
