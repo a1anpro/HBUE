@@ -14,7 +14,8 @@
 
             <form class="navbar-form navbar-left" action="/search/" method="get" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control search-frame" id="search" placeholder="搜索课程、老师">
+                    {# input表单，应该有变量名search #}
+                    <input type="text" class="form-control search-frame" name="search" id="search" placeholder="搜索课程、老师">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-default"><span class="glyphicon glyphicon-search grayicon"></span></button>
@@ -23,12 +24,19 @@
 
 
             <!-- 判断是否登录-->
-
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <button type="button" class="btn btn-default navbar-btn pull-right smodal">登录</button>
-                </li>
-            </ul>
+            {% if not isLogin %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn btn-default navbar-btn pull-right smodal">登录</button>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button type="button" class="btn btn-default navbar-btn pull-right smodal">已登录</button>
+                    </li>
+                </ul>
+            {% endif%}
         </div>
     </div>
 </nav>

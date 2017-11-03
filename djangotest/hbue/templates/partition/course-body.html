@@ -1,10 +1,11 @@
 <!--详细课程-->
+{% load staticfiles %}
 <div class="container">
     <div class="row float-element">
         <!--课程详细信息-->
         <div class="col-md-8 inline-h3">
-            <span class="blue h3">大学生心理学</span>
-            <span class="h3 blue">（徐晓飞）</span>
+            <span class="blue h3">{{ course.clss.className }}</span>
+            <span class="h3 blue">（{{ course.teacher.teacherName }}）</span>
             <hr>
             <div class="ud-pd-sm blue">
                 <span class="glyphicon glyphicon-star glyphicon-lg" aria-hidden="true"></span>
@@ -12,13 +13,33 @@
                 <span class="glyphicon glyphicon-star glyphicon-lg" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-star glyphicon-lg" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-star glyphicon-lg" aria-hidden="true"></span>
-                <span class="rl-pd-sm h4">9.4</span>
-                <span class="rl-pd-sm text-muted">（7人评价）</span>
+                <span class="rl-pd-sm h4">{{ course.lastRate }}.0</span>
+                <span class="rl-pd-sm text-muted">（{{ course.commentNum }}人评价）</span>
             </div>
             <ul class="text-muted list-inline list-unstyled up-pd-sm">
-                <li class="right-mg-md">点名频率：中等</li>
-                <li class="right-mg-md">通过率：中等</li>
-                <li class="right-mg-md">收获大小：中等</li>
+                {% if course.callRate < 4 %}
+                    <li>点名频率 ：&nbsp;&nbsp;较低</li>
+                {% elif course.callRate < 8 %}
+                    <li>点名频率 ：&nbsp;&nbsp;适中</li>
+                {% else %}
+                    <li>点名频率 ：&nbsp;&nbsp;较高</li>
+                {% endif %}
+
+                {% if course.passRate < 4 %}
+                    <li>通过率 ：&nbsp;&nbsp;较低</li>
+                {% elif course.passRate < 8 %}
+                    <li>通过率 ：&nbsp;&nbsp;适中</li>
+                {% else %}
+                    <li>通过率 ：&nbsp;&nbsp;较高</li>
+                {% endif %}
+
+                {% if course.getRate < 4 %}
+                    <li>收获大小 ：&nbsp;&nbsp;较低</li>
+                {% elif course.getRate < 8 %}
+                    <li>收获大小 ：&nbsp;&nbsp;中等</li>
+                {% else %}
+                    <li>收获大小 ：&nbsp;&nbsp;较高</li>
+                {% endif %}
             </ul>
 
             <!--课程信息-->
@@ -27,27 +48,21 @@
                     <tr>
                         <td>
                             <strong>学科类别：</strong>
-                             人文社科类
+                             {{ course.clss.classClass }}
                         </td>
-                        <td>
-                            <strong>开设学院：</strong>
-                             马克思主义学院
-                        </td>
-                    </tr>
-                    <tr>
                         <td>
                             <strong>学分：</strong>
-                             2
-                        </td>
-                        <td>
-                            <strong>学时：</strong>
-                             24
+                            {{ course.clss.credit }}
                         </td>
                     </tr>
                     <tr>
                         <td>
+                            <strong>开设学院：</strong>
+                             {{ course.clss.academy }}
+                        </td>
+                        <td>
                             <strong>容纳人数：</strong>
-                             30
+                             {{ course.clss.capacity }}
                         </td>
                     </tr>
                 </tbody>
@@ -66,8 +81,15 @@
                 </button>
             </div>
 
+            <!--点评 + 按钮-->
+            <div class="solid ud-pd-md2 inline-h3">
+                <span class="blue h3">点评</span>
+                <button class="btn btn-white float-right blue vmodal">
+                    <span class="glyphicon glyphicon-pencil glyphicon-sm right-pd-sm" aria-hidden="true"></span>&nbsp;写点评
+                </button>
+            </div>
             <!--点评模态框-->
-            {% include "remark-modalBOx.html" %}
+            {% include "remark-modalBox.html" %}
 
             <!--学生评论-->
             <div class="ud-pd-md2 dashed">
@@ -96,7 +118,7 @@
         <div class="col-md-4">
             <!--个人简介-->
             <div class="ud-pd-md2 dashed">
-                <img class="avatar-lg circle" src="img/user.png">
+                <img class="avatar-lg circle" src="{% static "img/user.png" %} ">{# 静态文件不会 #}
                 <h3 class="blue">
                     <a href="/teacher/{{ teacherId}}">{{ teacherName}}</a>
                 </h3>

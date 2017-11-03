@@ -309,9 +309,55 @@ td{
 	margin: 5px;
 }
 
+.fileinput-button {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+}
 
+.fileinput-button input{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	opacity: 0;
+	-ms-filter: 'alpha(opacity=0)';
+}
 
+.pink{
+	color: #F1C25B;
+	font-size: 20px;
+}
 
+.user{
+	width: 100px;
+	cursor: pointer;
+	float: right;
+	margin-top: 15px;
+	text-align: center;
+	color: grey;
+}
 
+.usertop a{
+	color: grey;
+}
 
+.mydropdown{
+	position: absolute;
+	width: 100px;
+	background: #fff;
+	display: none;
+}
 
+.mydropdown ul{
+	list-style: none;
+	text-align: center;
+	padding: 5px 0;
+}
+
+.mydropdown li a{
+	color: grey;	
+}
+
+.mydropdown li{
+	text-align: center;
+}

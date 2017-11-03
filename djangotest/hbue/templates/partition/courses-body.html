@@ -3,7 +3,6 @@
     <div class="row float-element">
         <!--评论区内容-->
         <div class="big_content">
-
             {% if isSearch %}{# 判断是搜索出来的多门课程，还是点击“课程”的所有热门课程 #}
                 <h4 class="blue desktop">搜索「{{ cOrtName }}」</h4>
             {% else %}
@@ -24,14 +23,16 @@
                                 <div class="rate-box">{{ course.likes }}</div>
                             </div>
                             <div class="bm-pd-md col-sm-10">
-                                <a class="px16" href="/course/{{ course.courseOnlyId }}">{{ course.teachName }}</a>
+                                <a class="px16" href="/course/{{ course.id }}">{{ course.clss.className }}({{ course.teacher.teacherName }})</a>
                                 <div class="ud-pd-sm blue">
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    <span class="rl-pd-sm h4">10.0</span>
+                                    <span class="rl-pd-sm h4">
+                                        {{ course.lastRate }}.0
+                                    </span>
                                     <span class="text-muted px12">({{ course.commentNum }} 人评价)</span>
                                 </div>
                             </div>
@@ -39,9 +40,30 @@
                       </div>
                       <div class="panel-body text-middle">
                         <ul class="text-muted list-inline list-unstyled">
-                            <li>点名频率 ：&nbsp;中等</li>
-                            <li>通过率 ：&nbsp;中等</li>
-                            <li>收获大小 ：&nbsp;中等</li>
+                            {% if course.callRate < 4 %}
+                                <li>点名频率 ：&nbsp;&nbsp;较低</li>
+                            {% elif course.callRate < 8 %}
+                                <li>点名频率 ：&nbsp;&nbsp;适中</li>
+                            {% else %}
+                                <li>点名频率 ：&nbsp;&nbsp;较高</li>
+                            {% endif %}
+
+                            {% if course.passRate < 4 %}
+                                <li>通过率 ：&nbsp;&nbsp;较低</li>
+                            {% elif course.passRate < 8 %}
+                                <li>通过率 ：&nbsp;&nbsp;适中</li>
+                            {% else %}
+                                <li>通过率 ：&nbsp;&nbsp;较高</li>
+                            {% endif %}
+
+                            {% if course.getRate < 4 %}
+                                <li>收获大小 ：&nbsp;&nbsp;较低</li>
+                            {% elif course.getRate < 8 %}
+                                <li>收获大小 ：&nbsp;&nbsp;中等</li>
+                            {% else %}
+                                <li>收获大小 ：&nbsp;&nbsp;较高</li>
+                            {% endif %}
+
                         </ul>
                       </div>
                     </div>
