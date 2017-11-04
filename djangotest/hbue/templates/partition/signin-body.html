@@ -2,11 +2,12 @@
     <div class="row float-element">
         <h3 class="blue">登录</h3>
         <hr>
-        <form class="form-horizontal" method="post" action="/signin">
+        <form class="form-horizontal" method="post" action="/signin/">
+            {% csrf_token %}
             <div class="form-group">
                 <label for="userid" class="col-sm-2 control-label">账号</label>
                 <div class="col-sm-4">
-                    <input type="text" name="userid" class="form-control" placeholder="学号">
+                    <input type="text" name="userId" class="form-control" placeholder="学号"><span style="color: red">{{ returnInfo }}</span>
                 </div>
             </div>
 

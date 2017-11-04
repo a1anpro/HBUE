@@ -14,8 +14,8 @@
             </div>
 
             <!-- 课程总评 -->
-            <div class="col-md-4">
-                {% for course in courses %}
+            {% for course in courses %}
+                <div class="col-md-4">
                     <div class="panel panel-default">
                       <div class="panel-heading">
                        <div class="row">
@@ -25,11 +25,14 @@
                             <div class="bm-pd-md col-sm-10">
                                 <a class="px16" href="/course/{{ course.id }}">{{ course.clss.className }}({{ course.teacher.teacherName }})</a>
                                 <div class="ud-pd-sm blue">
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+
+                                    {% for cnt in lastRate_list %}
+                                        {% if course.lastRate >= cnt %}
+                                            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>{# 实心 #}
+                                        {% else %}
+                                            <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                        {% endif %}
+                                    {% endfor %}
                                     <span class="rl-pd-sm h4">
                                         {{ course.lastRate }}.0
                                     </span>
@@ -67,8 +70,8 @@
                         </ul>
                       </div>
                     </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
         {% include "common-flipPage.html" %}
     </div>

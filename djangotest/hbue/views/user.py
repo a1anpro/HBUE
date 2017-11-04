@@ -1,13 +1,13 @@
+from django.http import HttpResponse
 from django.shortcuts import render
-from django.http import Http404, HttpResponse
-import string
+
 from hbue.models import *
-from hbue.static.function import index
+
 
 # 个人页面
 def user_x(request, userId):
     current_user = User.objects.get(id=userId)
-    print('当前用户：',current_user.userInfo)
+    print('user.py:当前用户：',current_user)
 
     return render(request,"user.html",
                   {

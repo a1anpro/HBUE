@@ -1,6 +1,6 @@
 from django.conf.urls import url,include
 from django.contrib import admin
-from hbue.views import comments,courses,other,search,sign,teacher,user
+from hbue.views import comments,courses,other,search,sign,teacher,user,logout
 
 urlpatterns = [
     url(r'^$', comments.main),  # 主页
@@ -13,8 +13,9 @@ urlpatterns = [
     url(r'^courses/(?P<page>[0-9]+)/$', courses.All),  # 点击分页后进行跳转之后的结果
     url(r'^course/([0-9]{1,6})/$', courses.One), # 单个课程页，即课程详细点评页 点击老师课程名跳转
     url(r'^course/[0-9]{1,6}/#comment-[0-9]{6}/$', courses.One), # 点击评论里的更多 跳转到相应的course下的锚点
-    url(r'^signin/$', sign.sin),  # 登录页面
-    url(r'^signup/$', sign.sup),  # 注册页面
+    url(r'^signin/$', sign.signin),  # 登录页面
+    url(r'^logout/$', logout.logout),#登出处理函数，在会话session中删除对象
+    url(r'^signup/$', sign.signup),  # 注册页面
     url(r'^reset/$', sign.reset), # 密码重置
     url(r'^user/([0-9]{1,6})/$', user.user_x), # 未登录时别人看到的
     url(r'^user/([0-9]{1,6})/follow/$', user.user_x),  # 关注的人

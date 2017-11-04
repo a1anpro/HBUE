@@ -65,10 +65,13 @@
             <button num="0" class="btn btn-warning btn-space">考试简单</button>
             <button num="0" class="btn btn-success btn-space">课程难度大</button>
 
-            <div class="form-group" style="margin-top: 10px;">
+            <form method="post" action="#">
                 <label for="message-text" class="control-label">留言:</label>
                 <textarea class="form-control" id="message-text" rows="5" style="resize: none"></textarea>
-            </div>
+                <input type="text" style="display: none" class="rate1-num" name="passrate" value=""/>
+                <input type="text" style="display: none" class="rate2-num" name="callrate" value=""/>
+                <input type="text" style="display: none" class="rate3-num" name="getrate" value=""/>
+            </form>
         </div>
       </div>
       <div class="modal-footer">

@@ -24,19 +24,30 @@
 
 
             <!-- 判断是否登录-->
-            {% if not isLogin %}
+            {% if request.session.hasLogedin %}
+                {# 已经登陆 #}
+                <div class="user">
+					<div class="usertop">
+{#                        <a href="/user/{{ request.session.current_user.id }}">{{ request.session.current_user.userName }}</a>#}
+                        {{ request.session.current_user.userName }}
+                        <i class="grey glyphicon glyphicon-chevron-down px12"></i>
+					    <div class="clear"></div>
+					</div>
+					<div class="mydropdown">
+						<ul>
+							<li><a href="/user/{{ request.session.current_user.id }}">个人信息</a></li>
+							<li><a href="/community-rule">帮助</a></li>
+							<li><a href="/logout">登出</a></li>
+						</ul>
+					</div>
+				</div>
+            {% else %}
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <button type="button" class="btn btn-default navbar-btn pull-right smodal">登录</button>
                     </li>
                 </ul>
-            {% else %}
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <button type="button" class="btn btn-default navbar-btn pull-right smodal">已登录</button>
-                    </li>
-                </ul>
-            {% endif%}
+            {% endif %}
         </div>
     </div>
 </nav>

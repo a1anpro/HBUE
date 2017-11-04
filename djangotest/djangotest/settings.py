@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hbue.apps.HbueConfig',
 ]
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'#“xxx is not JSON serializable”问题解决
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

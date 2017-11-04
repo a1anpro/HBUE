@@ -10,9 +10,9 @@ class User(models.Model):
     userName = models.CharField(max_length=20)#用户名
     password = models.CharField(max_length=20)#密码
     userIcon = models.CharField(max_length=30,default="/img/udefaultIcon.jpg")#用户头像路径，头像文件由用户上传，数据库只存用户头像路径
-    userInfo = models.TextField(max_length=300)#用户简介
+    userInfo = models.TextField(max_length=300,null=True,blank=True)#用户简介
     userAcademy = models.CharField(max_length=20)#用户所在学院
-    userLevel = models.IntegerField()#用户等级，比如：管理员，常客。。
+    userLevel = models.IntegerField(default=1)#用户等级，比如：管理员，常客。。
 
     def __str__(self):
         return self.userName

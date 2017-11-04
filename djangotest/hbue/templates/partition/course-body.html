@@ -84,9 +84,16 @@
             <!--点评 + 按钮-->
             <div class="solid ud-pd-md2 inline-h3">
                 <span class="blue h3">点评</span>
-                <button class="btn btn-white float-right blue vmodal">
-                    <span class="glyphicon glyphicon-pencil glyphicon-sm right-pd-sm" aria-hidden="true"></span>&nbsp;写点评
-                </button>
+                {% if request.session.hasLogedin %}
+                    <button class="btn btn-white float-right blue vmodal">
+                        <span class="glyphicon glyphicon-pencil glyphicon-sm right-pd-sm" aria-hidden="true"></span>&nbsp;写点评
+                    </button>
+                {% else %}
+                    <button type="button" class="btn btn-white blue navbar-btn pull-right smodal">
+                        <span class="glyphicon glyphicon-pencil glyphicon-sm right-pd-sm" aria-hidden="true"></span>写点评
+                    </button>
+                {% endif %}
+
             </div>
             <!--点评模态框-->
             {% include "remark-modalBox.html" %}

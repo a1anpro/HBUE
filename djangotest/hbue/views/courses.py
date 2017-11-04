@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from django.http import Http404, HttpResponse
-import string
+
 from hbue.models import *
-from hbue.static.function import index
+
 
 def All(request, current_page="1"):
     courses = Course.objects.all()
@@ -10,11 +9,12 @@ def All(request, current_page="1"):
         x.lastRate = int((x.getRate+x.callRate+x.passRate)/3) + 5
         # print(x.lastRate)
     # print("len:" + str(len(courses)))#长度测试
-    # teacher = Course.objects.filter(teacher_id=courses)
+
     return render(request,'courses.html',
                   {'isSearch':False,
                    'courseNum':len(courses),
                    'courses':courses,
+                   'lastRate_list':[2,4,6,8,10],
                    })
     # return HttpResponse(courses)
     #return HttpResponse("All " + current_page)

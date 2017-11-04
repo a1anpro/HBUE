@@ -1,33 +1,67 @@
 <div class="container">
     <div class="row float-element">
         <h3 class="blue">注册</h3>
+
         <hr>
-        <form class="form-horizontal" method="post" action="/signup">
-            <div id="userid" class="form-group">
-                <label for="userid" class="col-sm-2 control-label">账号</label>
+        <form class="form-horizontal" action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="academy" class="col-sm-2 control-label">学院</label>
                 <div class="col-sm-4">
-                    <input type="text" name="userid" class="form-control" placeholder="学号">
+                    <select id="academy" class="form-control" name="academy">
+                        <option value="0">信息工程学院</option>
+                        <option value="1">金融学院</option>
+                        <option value="2">经济与环境资源学院</option>
+                        <option value="3">工商管理学院</option>
+                        <option value="4">艺术设计学院</option>
+                        <option value="5">会计学院</option>
+                        <option value="6">法学院</option>
+                        <option value="7">外国语学院</option>
+                        <option value="8">马克思主义学院</option>
+                        <option value="9">体育经济与管理学院</option>
+                    </select>
                 </div>
+            </div>
+
+
+            <div id="userid" class="form-group">
+                <label for="userid" class="col-sm-2 control-label">学号</label>
+                <label>{{ returnInfo }}{# 如：该帐户已存在，请登陆； #}</label>
+                <div class="col-sm-4">
+                    <input type="text" name="userId" class="form-control auth" placeholder="请输入学号" required>
+                </div>
+{#                <div class="col-sm-3" style="margin-top:7px;">#}
+{#                    <span style="display:none;color:red;">账号不能为空!</span>#}
+{#                </div>#}
             </div>
 
             <div id="username" class="form-group">
                 <label for="username" class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-4">
-                    <input type="text" name="username" class="form-control" placeholder="Username">
+                    <input type="text" name="userName" class="form-control auth" placeholder="请输入用户名" required>
                 </div>
+{#                <div class="col-sm-3" style="margin-top:7px;">#}
+{#                    <span style="display:none;color:red;">用户名不能为空!</span>#}
+{#                </div>#}
             </div>
 
             <div id="password" class="form-group">
                 <label for="password" class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-4">
-                    <input type="password" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="pwd1" class="form-control auth" placeholder="8位及以上数字,字母或字符其中两种组成" required>
+                </div>
+                <div class="col-sm-3" style="margin-top:7px;">
+                    <span style="display:none;color:red;">密码强度不足，请重新输入!</span>
                 </div>
             </div>
 
             <div id="repassword" class="form-group">
                 <label for="repassword" class="col-sm-2 control-label">确认密码</label>
                 <div class="col-sm-4">
-                    <input type="password" name="repassword" class="form-control" placeholder="Password">
+                    <input type="password" name="pwd2" class="form-control auth" placeholder="RePassword" required>
+                </div>
+                <div class="col-sm-3" style="margin-top:7px;">
+                    <span class="float-right" style="display:none;color:red;">两次输入的密码不一致，请重新输入!</span>
                 </div>
             </div>
 
@@ -37,6 +71,7 @@
                 </div>
             </div>
         </form>
+
         <div class="row ud-pd-md2">
             <div class="col-sm-offset-2 col-sm-4">
                 <span class="text-muted">

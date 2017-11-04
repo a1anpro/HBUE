@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from django.http import Http404, HttpResponse
 import string
+
+from django.http import Http404
+from django.shortcuts import render
+
 from hbue.models import *
-from hbue.static.function import index
+
 
 def main(request, current_page="1"):
     try:
@@ -12,7 +14,7 @@ def main(request, current_page="1"):
 
     comments = Comment.objects.all()
     #print("所有评论：", comments)
-
+    # request.session['hasLogedin']=False
     return render(request,"main.html",
                   {
                       'current_page':current_page,
