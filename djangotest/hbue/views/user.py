@@ -7,7 +7,7 @@ from hbue.models import *
 # 个人页面
 def user_x(request, userId):
     current_user = User.objects.get(id=userId)
-    print('user.py:当前用户：',current_user)
+    # print('user.py:当前用户：',current_user)
 
     return render(request,"user.html",
                   {

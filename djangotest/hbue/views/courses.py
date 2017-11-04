@@ -21,7 +21,6 @@ def All(request, current_page="1"):
 
 def One(request, current_id):
     current_course = Course.objects.get(id=current_id)
-    # print("当前课程：",current_course)
     #查询这个老师的其他课：
     otherCourses = Course.objects.filter(teacher_id=current_course.teacher.id)
     #查询教这门课的其他老师：
