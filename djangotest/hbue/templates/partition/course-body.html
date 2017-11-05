@@ -98,27 +98,36 @@
             <!--点评模态框-->
             {% include "remark-modalBox.html" %}
 
-            <!--学生评论-->
-            <div class="ud-pd-md2 dashed">
-                <div class="blue ud-pd-sm">
-                    <span class="right-pd-sm px16">
-                        <a href="/user/{{ userId }}">swiftiemooc</a>
-                    </span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                </div>
+            <!--学生评论列表-->
+            {% for remark in thisCourseRemark %}
+                <div class="ud-pd-md2 dashed">
+                    <div class="blue ud-pd-sm">
+                        <span class="right-pd-sm px16">
+                            <a href="/user/{{ remark.user.id }}">{{ remark.user.userName }}</a>
+                        </span>
+{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
+{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
+{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
+{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
+{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
+                        {% for cnt in lastRate_list %}
+                            {% if remark.course.lastRate >= cnt %}
+                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>{# 实心 #}
+                            {% else %}
+                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
 
-                <div>
-                    <p>内容有趣，可以去听听。好好写篇小论文分数不会差。</p>
-                </div>
+                    <div>
+                        <p>内容有趣，可以去听听。好好写篇小论文分数不会差。</p>
+                    </div>
 
-                <div class="bm-pd-md grey">
-                    <span class="small">2017-10-19 11:37</span>
+                    <div class="bm-pd-md grey">
+                        <span class="small">2017-10-19 11:37</span>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
 
         <!--个人简介、其他老师的课、这个课的其他老师-->

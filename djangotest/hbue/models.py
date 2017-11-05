@@ -1,5 +1,6 @@
 from django.db import models
-
+import time
+from django.utils import timezone
 # Create your models here.
 
 # 用户
@@ -77,8 +78,9 @@ class Comment(models.Model):
     passRate = models.IntegerField()#同上，通过指标
     getRate = models.IntegerField()#同上，收获指标
     comment = models.TextField(max_length=300)#一个用户的文字评论
-    commentTime = models.DateTimeField()#评论时间
-    ifPass = models.BooleanField()#是否通过审核
+    commentTime = models.DateTimeField(default=timezone.now())#评论时间
+    #time.strftime('%Y-%m-%d',time.localtime(time.time()))  #str
+    ifPass = models.BooleanField(default=False)#是否通过审核
 
     def __str__(self):
         return self.user.userName + '(' + self.course.clss.className + ')'

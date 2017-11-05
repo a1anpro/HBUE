@@ -26,6 +26,8 @@ SECRET_KEY = '*8=&deyw%9jgea=diru_@4om1b$^6lu^8cys%x6ksfcobf-5fu'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+SESSION_COOKIE_AGE=60*30 #session失效时间30分钟
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 
 # Application definition
@@ -120,7 +122,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = True#用django.utils中的timezone时，需要设置USE_TZ为True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
