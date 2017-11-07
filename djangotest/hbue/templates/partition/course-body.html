@@ -103,28 +103,38 @@
                 <div class="ud-pd-md2 dashed">
                     <div class="blue ud-pd-sm">
                         <span class="right-pd-sm px16">
+{#                            <img height="300" width="200" class="avatar-md circle" src="{% static "img/penguin.png" %}">#}
                             <a href="/user/{{ remark.user.id }}">{{ remark.user.userName }}</a>
-                        </span>
-{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
-{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
-{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
-{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
-{#                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>#}
-                        {% for cnt in lastRate_list %}
-                            {% if remark.course.lastRate >= cnt %}
-                                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>{# 实心 #}
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {% if remark.callRate < 3 %}
+                                <button num="0" class="btn btn-success btn-space">点名较少</button>
+                            {% elif remark.callRate < 7 %}
+                                <button num="0" class="btn btn-warning btn-space">点名适中</button>
                             {% else %}
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                                <button num="0" class="btn btn-danger btn-space">点名较多</button>
                             {% endif %}
-                        {% endfor %}
+                            {% if remark.passRate < 7 %}
+                                <button num="0" class="btn btn-success btn-space">通过容易</button>
+                            {% else %}
+                                <button num="0" class="btn btn-danger btn-space">通过较难</button>
+                            {% endif %}
+                            {% if remark.getRate < 3 %}
+                                <button num="0" class="btn btn-secondary btn-space">收获较少</button>
+                            {% elif remark.getRate < 7 %}
+                                <button num="0" class="btn btn-warning btn-space">收获适中</button>
+                            {% else %}
+                                <button num="0" class="btn btn-info btn-space">收获很大</button>
+                            {% endif %}
+                        </span>
+
                     </div>
 
                     <div>
-                        <p>内容有趣，可以去听听。好好写篇小论文分数不会差。</p>
+                        <p>{{ remark.comment }}</p>
                     </div>
 
                     <div class="bm-pd-md grey">
-                        <span class="small">2017-10-19 11:37</span>
+                        <span class="small">{{ remark.commentTime|date:"m月d日 H:i" }}</span>
                     </div>
                 </div>
             {% endfor %}

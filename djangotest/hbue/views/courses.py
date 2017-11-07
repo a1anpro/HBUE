@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.http import HttpResponseRedirect
 from hbue.models import *
 
 
@@ -29,8 +29,9 @@ def One(request, current_id):
         current_user = request.session['current_user']#得到当前用户
         current_remark = Comment.objects.create(passRate=passrate,callRate=callrate, getRate=getrate,comment=remarkContent,course_id=current_course.id,user_id=current_user.id)
         current_remark.save()
-    else:
-        print("没有表单提交")#测试
+        return HttpResponseRedirect('/course/' + current_id)#防止刷新后重复提交表单。重定向到该页面，再次调用One
+    # else:
+    #     print("没有表单提交")#测试
 
     #查询这个老师的其他课：
     otherCourses = Course.objects.filter(teacher_id=current_course.teacher.id)
