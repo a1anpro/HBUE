@@ -6,10 +6,11 @@
             <div class="big_content">
 
                 <div class="inline-h3">
-                    <a href="/user/{{ userId }}/comments/">
+{#                    <a href="/user/{{ userId }}/comments/">#}
+{#                        </a>#}
                         <span class="blue h4">
-                            <strong>点评</strong>
-                        </span>（{{ numOfComments }}门）
+                            <strong>点评</strong>（{{ numOfComments }}门）
+                        </span>
                         {% for remark in hisAllComments %}
                             <div class="ud-pd-md2 dashed">
                                 <div class="blue ud-pd-sm">
@@ -26,7 +27,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                    </a>
+
                     <span class="float-right">
                         <a href="/user/{{ userId }}/comments/">查看更多>></a>
                     </span>
@@ -48,14 +49,14 @@
 
             </div>
 
-            <!--关注-->
+            <!--推荐-->
             <div class="big_content">
                 <div class="inline-h3">
-                    <a href="/user/{{ userId }}/follow/">
+{#                    <a href="/user/{{ userId }}/follow/">#}
                         <span class="blue h4">
-                            <strong>关注</strong>&nbsp;&nbsp;（2门）
+                            <strong>推荐</strong>&nbsp;&nbsp;（2门）
                         </span>
-                    </a>
+{#                    </a>#}
                 </div>
                 <p class="text-muted">可以关注喜欢的课程哦！</p>
             </div>
