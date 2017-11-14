@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import Http404, HttpResponse,HttpResponseRedirect
 import string
 from hbue.models import *
-
+import hashlib
 def signin(request):
     returnInfo=''#如果用户不存在，内容是用户不存在，请注册；如果id存在但是密码不匹配返回，密码错误。
     if request.method != 'POST':
@@ -16,7 +16,7 @@ def signin(request):
             else:
                 #有这个人，比较密码是否相同
                 current_user = User.objects.get(userId=request.POST['userId'])
-                if current_user.password == request.POST['password']:
+                if current_user.password == hashlib.md5(request.POST['password'].encode('utf-8')).hexdigest():
                     #登陆成功，设置session，重定向到主页
                     request.session['hasLogedin'] = True
                     # print('当前用户测试:',current_user)#测试当前用户
@@ -46,10 +46,19 @@ def signup(request):
             if int(sameIdCnt)!=0:
                 returnInfo='该同学已经注册，请登陆或重新注册！'
             else:
-                user=User.objects.create(userId=request.POST['userId'],userName=request.POST['userName'],password=request.POST['pwd1'],userAcademy=academy[int(request.POST['academy'])])
+                md5_password=hashlib.md5(request.POST['pwd1'].encode('utf-8')).hexdigest()
+                # print('md5密码:',md5_password)
+
+                user=User.objects.create(userId=request.POST['userId'],userName=request.POST['userName'],password=md5_password ,userAcademy=academy[int(request.POST['academy'])])
                 user.save()
+                request.session['hasLogedin'] = True
+                # print('当前用户测试:',current_user)#测试当前用户
+                request.session['current_user'] = user  # 将当前查到的用户对象放到session
+                # print('session对象测试：', request.session['current_user'])
+                # print('hasLogedin测试:', request.session['hasLogedin'])
+                return HttpResponseRedirect('/main')
                 #数据库写成功
-                return HttpResponseRedirect('/user/' + str(user.id))#这里应该登陆状态
+                # return HttpResponseRedirect('/user/' + str(user.id))#这里应该登陆状态
     # else:
         # returnInfo='未提交成功，请重新提交！'
     return render(request, "signup.html",
@@ -57,7 +66,35 @@ def signup(request):
                       'returnInfo':returnInfo,
                   })
 
+def check(request):
+    retInfo = ''#提示信息
+    if request.POST:
+        userId = request.POST['userId']
+        userName = request.POST['userName']
+        academy = request.POST['academy']
+        try:
+            user = User.objects.get(userId=userId)
+        except Exception:
+            retInfo = '验证信息失败，请重新验证！'
+            return render(request, 'checkPassword.html',
+                          {
+                              'retInfo': retInfo,
+                          })
+        if userName==user.userName and academy==user.userAcademy:
+            return HttpResponseRedirect('/reset/' + str(user.id))#验证成功，重定向到重置密码
+        else:
+            retInfo='验证信息失败，请重新验证！'
+            return render(request,'checkPassword.html',
+                          {
+                              'retInfo':retInfo,
+                          })
+    return render(request,'checkPassword.html')
 
-
-def reset(request):
-    return HttpResponse("Reset Password")
+def reset(request, userId):
+    if request.POST:
+        user = User.objects.get(id=userId)
+        md5_password = hashlib.md5(request.POST['pwd1'].encode('utf-8')).hexdigest()
+        user.password = md5_password
+        user.save()
+        return HttpResponseRedirect('/main')
+    return render(request,'resetPassword.html')

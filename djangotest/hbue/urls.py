@@ -6,9 +6,9 @@ urlpatterns = [
     url(r'^$', comments.main),  # 主页
     url(r'^main/$', comments.main),  # 点击点评后的页面
     url(r'^main(?P<page>[0-9]+)/$', comments.main),  # 点击分页后进行跳转之后的结果
-    url(r'^search/$', search.redirect), # 遇到url 为 /search 时，需要重定向
-    url(r'^search/(?P<cOrt>[\u4e00-\u9fa5]*)/$', search.Search), # 按课程或教师进行查询
-    url(r'^search/(?P<cOrt>[\u4e00-\u9fa5]*)&(?P<page>[0-9]+)/$', search.Search), # 按课程或教师进行查询并翻页
+    url(r'^search/$', search.search), # 遇到url 为 /search 时，需要重定向
+    # url(r'^search/(?P<cOrt>[\u4e00-\u9fa5]*)/$', search.search), # 按课程或教师进行查询
+    # url(r'^search/(?P<cOrt>[\u4e00-\u9fa5]*)&(?P<page>[0-9]+)/$', search.Search), # 按课程或教师进行查询并翻页
     url(r'^courses/$', courses.All),  # 所有的课程页
     url(r'^courses/(?P<page>[0-9]+)/$', courses.All),  # 点击分页后进行跳转之后的结果
     url(r'^course/([0-9]{1,6})/$', courses.One), # 单个课程页，即课程详细点评页 点击老师课程名跳转
@@ -16,8 +16,10 @@ urlpatterns = [
     url(r'^signin/$', sign.signin),  # 登录页面
     url(r'^logout/$', logout.logout),#登出处理函数，在会话session中删除对象
     url(r'^signup/$', sign.signup),  # 注册页面
-    url(r'^reset/$', sign.reset), # 密码重置
-    url(r'^user/([0-9]{1,6})/$', user.user_x), # 未登录时别人看到的
+    url(r'^check/$', sign.check), # 验证信息，成功则修改密码
+    url(r'^reset/([0-9]{1,6})/$', sign.reset),  # 密码重置
+    url(r'^user/([0-9]{1,6})/$', user.user_x), #个人页面
+    url(r'^user/([0-9]{1,6})/edit/$',user.edit),
     url(r'^user/([0-9]{1,6})/follow/$', user.user_x),  # 关注的人
     url(r'^user/([0-9]{1,6})/comments/$', user.user_x),  # 该用户所有的评论
     url(r'^user/inner/([0-9]{1,6})/$', user.user_inner), # 登录或者注册过后进行跳转 用户id 未明确

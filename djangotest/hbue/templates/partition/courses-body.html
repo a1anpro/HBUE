@@ -4,7 +4,7 @@
         <!--评论区内容-->
         <div class="big_content">
             {% if isSearch %}{# 判断是搜索出来的多门课程，还是点击“课程”的所有热门课程 #}
-                <h4 class="blue desktop">搜索「{{ cOrtName }}」</h4>
+                <h4 class="blue desktop">搜索「{{ content }}」</h4>
             {% else %}
                 <h4 class="blue desktop">热门课程</h4>
             {% endif %}
@@ -20,7 +20,7 @@
                       <div class="panel-heading">
                        <div class="row">
                             <div class="col-sm-2">
-                                <div class="rate-box">{{ course.likes }}</div>
+{#                                <div class="rate-box">{{ course.likes }}</div>#}
                             </div>
                             <div class="bm-pd-md col-sm-10">
                                 <a class="px16" href="/course/{{ course.id }}">{{ course.clss.className }}({{ course.teacher.teacherName }})</a>

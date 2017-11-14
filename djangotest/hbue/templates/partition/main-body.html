@@ -18,7 +18,7 @@
                   <div class="panel-heading">
                    <div class="row">
                         <div class="col-sm-3">
-                            <img class="avatar-md circle" src="{% static "img/penguin.png" %}">
+                            <img class="avatar-md circle" src="/{{ comment.user.userIcon}}" alt="">
                         </div>
                         <div class="bm-pd-md col-sm-8">
                             <a href="/user/{{ comment.user_id }}">{{ comment.user.userName }}</a>&nbsp;&nbsp;点评了&nbsp;&nbsp;

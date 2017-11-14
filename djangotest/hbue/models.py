@@ -9,8 +9,9 @@ class User(models.Model):
 
     userId = models.CharField(max_length=10)#用户id
     userName = models.CharField(max_length=20)#用户名
-    password = models.CharField(max_length=20)#密码
-    userIcon = models.CharField(max_length=30,default="/img/udefaultIcon.jpg")#用户头像路径，头像文件由用户上传，数据库只存用户头像路径
+    password = models.CharField(max_length=33)#密码
+    # userIcon = models.CharField(max_length=30,default="/img/udefaultIcon.jpg")#用户头像路径，头像文件由用户上传，数据库只存用户头像路径
+    userIcon = models.FileField(upload_to='hbue/static/img/user/%m/%d', default='hbue/static/img/penguin.png')
     userInfo = models.TextField(max_length=300,null=True,blank=True)#用户简介
     userAcademy = models.CharField(max_length=20)#用户所在学院
     userLevel = models.IntegerField(default=1)#用户等级，比如：管理员，常客。。
@@ -78,7 +79,7 @@ class Comment(models.Model):
     passRate = models.IntegerField()#同上，通过指标
     getRate = models.IntegerField()#同上，收获指标
     comment = models.TextField(max_length=300)#一个用户的文字评论
-    commentTime = models.DateTimeField(default=timezone.now())#评论时间
+    commentTime = models.DateTimeField(auto_now=True)#评论时间
     #time.strftime('%Y-%m-%d',time.localtime(time.time()))  #str
     ifPass = models.BooleanField(default=False)#是否通过审核
 

@@ -22,14 +22,6 @@ def main(request, current_page="1"):
                       'comments':comments,
                   })
 
-def search(request, cOrt):
-    try:
-        cOrt = string(cOrt)
-    except ValueError:
-        raise Http404()
-
-    return render(request, 'search.html',{})
-
 def index(input, current_page):
     # 每页显示10条数据
     per_page_count = 10

@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from hbue.models import *
 
-
 def All(request, current_page="1"):
     courses = Course.objects.all()
     for x in courses:
@@ -22,6 +21,7 @@ def All(request, current_page="1"):
 def One(request, current_id):
     current_course = Course.objects.get(id=current_id)#不管是提交了表单还是未提交表单，都需要查询当前这门课
     if request.POST:
+        current_course.commentNum += 1#评论加1
         passrate = int(request.POST['passrate'])
         callrate = int(request.POST['callrate'])
         getrate = int(request.POST['getrate'])
@@ -29,6 +29,7 @@ def One(request, current_id):
         current_user = request.session['current_user']#得到当前用户
         current_remark = Comment.objects.create(passRate=passrate,callRate=callrate, getRate=getrate,comment=remarkContent,course_id=current_course.id,user_id=current_user.id)
         current_remark.save()
+        current_course.save()
         return HttpResponseRedirect('/course/' + current_id)#防止刷新后重复提交表单。重定向到该页面，再次调用One
     # else:
     #     print("没有表单提交")#测试
